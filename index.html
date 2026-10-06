@@ -88,11 +88,13 @@
         /* Botões */
         button { background-color: #1a2e40; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px; font-weight: bold; transition: background 0.3s; }
         button:hover { background-color: #2b547e; }
+        button:disabled { background-color: #a0aec0; cursor: not-allowed; }
         .btn-presenca { background-color: #2f855a; text-decoration: none; color: white; display: inline-block; padding: 15px 25px; font-weight: bold; border-radius: 5px; margin-top: 10px; }
         .btn-presenca:hover { background-color: #276749; }
 
         /* Mensagens e Seções Ocultas */
         .error-msg { color: #e53e3e; font-weight: bold; display: none; margin-top: 10px; text-align: center; }
+        .video-notice { color: #c53030; font-size: 14px; font-weight: bold; margin-top: 10px; text-align: center; }
         .sucesso-secao { color: #2f855a; font-weight: bold; text-align: center; margin-top: 10px; }
         #secao2, #secao3, #secao4, #secao5, #presenca-area { display: none; }
 
@@ -112,7 +114,6 @@
 
 <header>
     <div class="header-content">
-        <!-- Substitua 'logo.png' pelo nome da imagem da sua logo salva no GitHub -->
         <img src="logo.png" alt="Logo da Escola" class="header-logo" onerror="this.style.display='none'">
         <div class="header-text">
             <h1>REUNIÃO EXTRACLASSE - OUTUBRO/2026</h1>
@@ -131,14 +132,12 @@
     <div id="secao1">
         <h2>Seção 1: Pauta, Cronograma e Distribuição de Notas</h2>
 
-        <!-- PDF Incorporado via Google Drive -->
         <h3>📄 Cronograma Oficial de Datas (PDF)</h3>
         <p>Acompanhe o documento em PDF ou faça a leitura da tabela abaixo:</p>
         <div style="text-align: center; margin: 20px 0;">
             <iframe src="https://drive.google.com/file/d/1mH6cYujzRN3EuxrkL1ioJ0t1UN_lonj0/preview" width="100%" height="450px" style="border: 1px solid #cbd5e0; border-radius: 6px;"></iframe>
         </div>
 
-        <!-- Tabela de Distribuição de Notas -->
         <h3>📊 Distribuição de Notas - 3º Trimestre</h3>
         <table>
             <thead>
@@ -171,7 +170,6 @@
             </tbody>
         </table>
 
-        <!-- Questionário de Validação da Seção 1 -->
         <h3>📝 Validação de Leitura dos Prazos</h3>
         <form id="quiz-secao1">
             <div class="question">
@@ -190,9 +188,9 @@
 
             <div class="question">
                 <p>3. Qual é a data de entrega dos Trabalhos de Estudos Independentes (EI) para a Supervisão?</p>
-                <label><input type="radio" name="s1_q3" value="correto"> 26/11 a 03/12 </label>
+                <label><input type="radio" name="s1_q3" value="correto"> 26/11 a 03/12</label>
                 <label><input type="radio" name="s1_q3" value="errado"> 03 a 08/12</label>
-                <label><input type="radio" name="s1_q3" value="errado"> 11 a 18/11 </label>
+                <label><input type="radio" name="s1_q3" value="errado"> 11 a 18/11</label>
             </div>
 
             <div class="question">
@@ -231,13 +229,11 @@
             <p><strong>Registros no DED:</strong> Redobrar a atenção no lançamento de: Notas, Frequência, Deveres de casa, Registros dos alunos infrequentes e demais informações acadêmicas solicitadas no sistema.</p>
         </div>
 
-        <!-- VÍDEO 1: DED DEVER DE CASA -->
         <div class="video-box">
             <h3>📹 Tutorial 1: Lançamento de Dever de Casa no DED</h3>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/-6nSxMWe1P8" frameborder="0" allowfullscreen></iframe>
+            <div id="player-ded"></div>
         </div>
 
-        <!-- QUESTIONÁRIO DA SEÇÃO 2 -->
         <h3>📝 Validação do Tutorial DED</h3>
         <form id="quiz-secao2">
             <div class="question">
@@ -246,7 +242,8 @@
                 <label><input type="radio" name="s2_q1" value="errado"> Atribuir presença geral aos alunos infrequentes para evitar pendências</label>
             </div>
 
-            <button type="button" onclick="validarSecao2()">Validar DED e Ir para a Seção 3 (EstudoPlay)</button>
+            <button type="button" id="btn-s2" onclick="validarSecao2()" disabled>Validar DED e Ir para a Seção 3 (EstudoPlay)</button>
+            <p id="notice-s2" class="video-notice">▶ Assista ao vídeo acima até ao fim para habilitar o botão de avanço.</p>
             <p id="error-s2" class="error-msg">Verifique a resposta sobre o DED antes de avançar.</p>
         </form>
     </div>
@@ -268,19 +265,16 @@
             <p><strong>Segue abaixo um tutorial de como criar na plataforma, provas e redação, para correção automática:</strong></p>
         </div>
 
-        <!-- VÍDEO 1 ESTUDO PLAY: PROVAS -->
         <div class="video-box">
             <h3>📹 Tutorial 2: Criação de Provas na Plataforma EstudoPlay</h3>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/K1kcnMI-s7k" frameborder="0" allowfullscreen></iframe>
+            <div id="player-estudoplay1"></div>
         </div>
 
-        <!-- VÍDEO 2 ESTUDO PLAY: REDAÇÃO -->
         <div class="video-box">
             <h3>📹 Tutorial 3: Criação e Gestão de Redações na Plataforma EstudoPlay</h3>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/g7o-G2Han0Y" frameborder="0" allowfullscreen></iframe>
+            <div id="player-estudoplay2"></div>
         </div>
 
-        <!-- QUESTIONÁRIO DA SEÇÃO 3 -->
         <h3>📝 Validação do Tutorial EstudoPlay</h3>
         <form id="quiz-secao3">
             <div class="question">
@@ -289,7 +283,8 @@
                 <label><input type="radio" name="s3_q1" value="errado"> Exclusivamente para lançamento de frequência diária dos estudantes</label>
             </div>
 
-            <button type="button" onclick="validarSecao3()">Validar EstudoPlay e Ir para a Seção 4 (Resultados e Recomposição)</button>
+            <button type="button" id="btn-s3" onclick="validarSecao3()" disabled>Validar EstudoPlay e Ir para a Seção 4 (Resultados e Recomposição)</button>
+            <p id="notice-s3" class="video-notice">▶ Assista a ambos os vídeos desta seção até ao fim para habilitar o botão de avanço.</p>
             <p id="error-s3" class="error-msg">Verifique a resposta sobre a EstudoPlay antes de avançar.</p>
         </form>
     </div>
@@ -318,7 +313,6 @@
             </ul>
         </div>
 
-        <!-- QUESTIONÁRIO DA SEÇÃO 4 -->
         <h3>📝 Validação sobre Acompanhamento Pedagógico</h3>
         <form id="quiz-secao4">
             <div class="question">
@@ -337,7 +331,6 @@
         <h2>Seção 5: Organização da Rotina Escolar e Encerramento</h2>
         <p class="sucesso-secao">✓ Seção 4 Validada com Sucesso!</p>
 
-        <!-- ORGANIZAÇÃO DA ROTINA ESCOLAR -->
         <div class="box-info">
             <h3>🚻 ORGANIZAÇÃO DA ROTINA ESCOLAR</h3>
             <p><strong>Liberação de estudantes:</strong></p>
@@ -353,7 +346,6 @@
             </ul>
         </div>
 
-        <!-- FOCO PARA O ENCERRAMENTO DO ANO -->
         <div class="box-warning">
             <h3>🔎 FOCO PARA O ENCERRAMENTO DO ANO</h3>
             <p>Neste período final, é importante garantir:</p>
@@ -362,7 +354,7 @@
                 <li>✔️ Frequência real dos estudantes</li>
                 <li>✔️ Notas lançadas e conferidas</li>
                 <li>✔️ Análise dos resultados do ENEM e SAEB</li>
-                <li>✔️️ Ações de recomposição das aprendizagens</li>
+                <li>✔️ Ações de recomposição das aprendizagens</li>
                 <li>✔️ Cumprimento dos prazos e entregas</li>
                 <li>✔️ Organização dos Conselhos de Classe</li>
                 <li>✔️ Preparação para o EI</li>
@@ -370,7 +362,6 @@
             </ul>
         </div>
 
-        <!-- REGISTRO DE EXTRACLASSE -->
         <div class="box-success">
             <h3>📝 REGISTRO DE EXTRACLASSE</h3>
             <p>Para o registro no livro de ponto, das atividades extraclasse (relativo às 4h de reunião de área) dos meses de agosto e setembro, utilizar as seguintes informações:</p>
@@ -380,7 +371,6 @@
             </ul>
         </div>
 
-        <!-- QUESTIONÁRIO DA SEÇÃO 5 -->
         <h3>📝 Validação da Rotina e Diretrizes do Ponto</h3>
         <form id="quiz-secao5">
             <div class="question">
@@ -415,7 +405,75 @@
     © Luana Dias. Todos os direitos reservados.
 </footer>
 
+<!-- CARREGAMENTO DA YOUTUBE IFRAME PLAYER API -->
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
+    let playerDED;
+    let playerEstudo1;
+    let playerEstudo2;
+
+    let v2_1_finalizado = false;
+    let v2_2_finalizado = false;
+
+    // Função padrão invocada automaticamente pela API do YouTube assim que o script é carregado
+    function onYouTubeIframeAPIReady() {
+        // Player do Vídeo DED
+        playerDED = new YT.Player('player-ded', {
+            height: '315',
+            width: '100%',
+            videoId: '-6nSxMWe1P8',
+            events: {
+                'onStateChange': function(event) {
+                    if (event.data === YT.PlayerState.ENDED) {
+                        document.getElementById('btn-s2').disabled = false;
+                        document.getElementById('notice-s2').style.color = '#2f855a';
+                        document.getElementById('notice-s2').innerText = '✓ Vídeo concluído! Pode responder à pergunta e avançar.';
+                    }
+                }
+            }
+        });
+
+        // Player 1 do EstudoPlay (Provas)
+        playerEstudo1 = new YT.Player('player-estudoplay1', {
+            height: '315',
+            width: '100%',
+            videoId: 'K1kcnMI-s7k',
+            events: {
+                'onStateChange': function(event) {
+                    if (event.data === YT.PlayerState.ENDED) {
+                        v2_1_finalizado = true;
+                        verificarLibercaoSecao3();
+                    }
+                }
+            }
+        });
+
+        // Player 2 do EstudoPlay (Redações)
+        playerEstudo2 = new YT.Player('player-estudoplay2', {
+            height: '315',
+            width: '100%',
+            videoId: 'g7o-G2Han0Y',
+            events: {
+                'onStateChange': function(event) {
+                    if (event.data === YT.PlayerState.ENDED) {
+                        v2_2_finalizado = true;
+                        verificarLibercaoSecao3();
+                    }
+                }
+            }
+        });
+    }
+
+    function verificarLibercaoSecao3() {
+        if (v2_1_finalizado && v2_2_finalizado) {
+            document.getElementById('btn-s3').disabled = false;
+            document.getElementById('notice-s3').style.color = '#2f855a';
+            document.getElementById('notice-s3').innerText = '✓ Todos os vídeos foram concluídos! Pode responder e avançar.';
+        } else {
+            document.getElementById('notice-s3').innerText = '▶ Assista a ambos os vídeos para habilitar o botão de avanço.';
+        }
+    }
+
     function validarSecao1() {
         const q1 = document.querySelector('input[name="s1_q1"]:checked');
         const q2 = document.querySelector('input[name="s1_q1_2"]:checked');
