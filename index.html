@@ -91,12 +91,16 @@
         button:disabled { background-color: #a0aec0; cursor: not-allowed; }
         .btn-presenca { background-color: #2f855a; text-decoration: none; color: white; display: inline-block; padding: 15px 25px; font-weight: bold; border-radius: 5px; margin-top: 10px; }
         .btn-presenca:hover { background-color: #276749; }
+        .btn-link { background-color: #2b547e; text-decoration: none; color: white; display: inline-block; padding: 10px 18px; font-weight: bold; border-radius: 5px; margin: 10px 0; }
+        .btn-link:hover { background-color: #1a2e40; }
 
         /* Mensagens e Seções Ocultas */
         .error-msg { color: #e53e3e; font-weight: bold; display: none; margin-top: 10px; text-align: center; }
         .video-notice { color: #c53030; font-size: 14px; font-weight: bold; margin-top: 10px; text-align: center; }
         .sucesso-secao { color: #2f855a; font-weight: bold; text-align: center; margin-top: 10px; }
-        #secao2, #secao3, #secao4, #secao5, #presenca-area { display: none; }
+        
+        /* Ocultando seções sequenciais */
+        #secao2, #secao3, #secao4, #secao5, #secao6, #secao7, #secao8, #secao9, #presenca-area { display: none; }
 
         /* Estilo do Rodapé Azul */
         footer {
@@ -125,7 +129,7 @@
 <div class="container">
 
     <div class="box-warning">
-        <p><strong>Aviso Importante:</strong> Em razão do quadro reduzido de Especialistas em Educação Básica (EEB) em exercício na escola, esta reunião ocorre em formato assíncrono. Siga as seções abaixo para liberar o acesso à lista de presença final.</p>
+        <p><strong>Aviso Importante:</strong> Em razão do quadro reduzido de Especialistas em Educação Básica (EEB) em exercício em nossa escola, esta reunião ocorre em formato assíncrono. Siga todas as seções sequencialmente para validar suas pendências e liberar a lista de presença final.</p>
     </div>
 
     <!-- ================= SEÇÃO 1: PAUTA E DATAS ================= -->
@@ -147,26 +151,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Aluno Nota 3</td>
-                    <td style="text-align: center; font-weight: bold;">3,0 pts</td>
-                </tr>
-                <tr>
-                    <td>Zé Escreve</td>
-                    <td style="text-align: center; font-weight: bold;">5,0 pts</td>
-                </tr>
-                <tr>
-                    <td>Mostra Científica</td>
-                    <td style="text-align: center; font-weight: bold;">5,0 pts</td>
-                </tr>
-                <tr>
-                    <td>Avaliação Trimestral / Simulado</td>
-                    <td style="text-align: center; font-weight: bold;">10,0 pts</td>
-                </tr>
-                <tr>
-                    <td>Avaliação Trimestral SIMAVE (Matemática e Português)</td>
-                    <td style="text-align: center; font-weight: bold;">4,0 pts</td>
-                </tr>
+                <tr><td>Aluno Nota 3</td><td style="text-align: center; font-weight: bold;">3,0 pts</td></tr>
+                <tr><td>Zé Escreve</td><td style="text-align: center; font-weight: bold;">5,0 pts</td></tr>
+                <tr><td>Mostra Científica</td><td style="text-align: center; font-weight: bold;">5,0 pts</td></tr>
+                <tr><td>Avaliação Trimestral / Simulado</td><td style="text-align: center; font-weight: bold;">10,0 pts</td></tr>
+                <tr><td>Avaliação Trimestral SIMAVE (Matemática e Português)</td><td style="text-align: center; font-weight: bold;">4,0 pts</td></tr>
             </tbody>
         </table>
 
@@ -299,260 +288,4 @@
             <ul>
                 <li>Realizar a análise dos dados do ENEM e SAEB, utilizando os resultados para identificar habilidades consolidadas e aquelas que ainda necessitam de intervenção.</li>
                 <li>Utilizar os dados como subsídio para o planejamento das ações pedagógicas e da recomposição das aprendizagens.</li>
-                <li>Para verificar os dados do ENEM e do SAEB, o acesso é feito através da plataforma no <strong>SIMAVE</strong>.</li>
-                <li>Assim como orientado na reunião anterior, os professores de <strong>Língua Portuguesa e Matemática</strong> devem escolher entre <strong>2 e 3 habilidades prioritárias</strong> para trabalhar a recomposição.</li>
-            </ul>
-        </div>
-
-        <div class="box-warning">
-            <h3>📚 Material Específico da Recomposição das Aprendizagens</h3>
-            <ul>
-                <li>Utilizar os materiais de recomposição das aprendizagens disponíveis no <strong>Mural Virtual</strong>.</li>
-                <li><strong>Orientação:</strong> realizar a utilização dos materiais no mínimo <strong>uma vez por semana</strong>, de acordo com as necessidades das turmas.</li>
-                <li>Não serão impressas apostilas individuais por aluno, visto que o material é extenso; porém, os professores podem solicitar as cópias das páginas que desejam trabalhar via <strong>e-mail da supervisão</strong>.</li>
-            </ul>
-        </div>
-
-        <h3>📝 Validação sobre Acompanhamento Pedagógico</h3>
-        <form id="quiz-secao4">
-            <div class="question">
-                <p>7. Como deve ser feito o trabalho de recomposição das aprendizagens e a solicitação de materiais?</p>
-                <label><input type="radio" name="s4_q1" value="correto"> Utilizar os materiais do Mural Virtual no mínimo 1x por semana e solicitar impressões de páginas específicas via e-mail da supervisão</label>
-                <label><input type="radio" name="s4_q1" value="errado"> Serão impressas apostilas completas individuais para todos os alunos e o uso é opcional</label>
-            </div>
-
-            <button type="button" onclick="validarSecao4()">Validar Resultados e Ir para a Seção 5 (Rotina e Fechamento)</button>
-            <p id="error-s4" class="error-msg">Verifique a resposta sobre a recomposição antes de avançar.</p>
-        </form>
-    </div>
-
-    <!-- ================= SEÇÃO 5: ROTINA, ENCERRAMENTO E EXTRACLASSE ================= -->
-    <div id="secao5">
-        <h2>Seção 5: Organização da Rotina Escolar e Encerramento</h2>
-        <p class="sucesso-secao">✓ Seção 4 Validada com Sucesso!</p>
-
-        <div class="box-info">
-            <h3>🚻 ORGANIZAÇÃO DA ROTINA ESCOLAR</h3>
-            <p><strong>Liberação de estudantes:</strong></p>
-            <ul>
-                <li>Evitar a liberação de alunos para água ou banheiro imediatamente após o recreio, sempre que não houver uma necessidade específica e bem justificada.</li>
-                <li>A orientação busca contribuir para a organização da rotina, o retorno adequado às salas e o melhor aproveitamento do tempo pedagógico.</li>
-            </ul>
-            <p><strong>Saída de professores da sala de aula:</strong></p>
-            <ul>
-                <li>Durante o horário de aula, sair da sala de aula, deixando a turma sozinha, apenas em casos de <strong>EXTREMA URGÊNCIA</strong>.</li>
-                <li>Caso seja necessário encaminhar alunos à vice-direção ou supervisão, solicitar que o representante de sala o acompanhe.</li>
-                <li><strong>Em hipótese alguma os alunos podem estar na sala de aula desacompanhados.</strong></li>
-            </ul>
-        </div>
-
-        <div class="box-warning">
-            <h3>🔎 FOCO PARA O ENCERRAMENTO DO ANO</h3>
-            <p>Neste período final, é importante garantir:</p>
-            <ul>
-                <li>✔️ Registros atualizados e fidedignos no DED</li>
-                <li>✔️ Frequência real dos estudantes</li>
-                <li>✔️ Notas lançadas e conferidas</li>
-                <li>✔️ Análise dos resultados do ENEM e SAEB</li>
-                <li>✔️ Ações de recomposição das aprendizagens</li>
-                <li>✔️ Cumprimento dos prazos e entregas</li>
-                <li>✔️ Organização dos Conselhos de Classe</li>
-                <li>✔️ Preparação para o EI</li>
-                <li>✔️ Organização dos documentos e registros para o fechamento do ano letivo</li>
-            </ul>
-        </div>
-
-        <div class="box-success">
-            <h3>📝 REGISTRO DE EXTRACLASSE</h3>
-            <p>Para o registro no livro de ponto, das atividades extraclasse (relativo às 4h de reunião de área) dos meses de agosto e setembro, utilizar as seguintes informações:</p>
-            <ul>
-                <li><strong>Agosto:</strong> 17 a 22/08</li>
-                <li><strong>Setembro:</strong> 08 a 12/09</li>
-            </ul>
-        </div>
-
-        <h3>📝 Validação da Rotina e Diretrizes do Ponto</h3>
-        <form id="quiz-secao5">
-            <div class="question">
-                <p>8. Qual a orientação quanto à ausência do professor na sala de aula durante o horário de aula?</p>
-                <label><input type="radio" name="s5_q1" value="correto"> Apenas em extrema urgência, usando o representante para encaminhar alunos à direção/supervisão e nunca deixando a turma desacompanhada</label>
-                <label><input type="radio" name="s5_q1" value="errado"> É permitido sair livremente deixando os alunos sozinhos caso precisem resolver assuntos pedagógicos</label>
-            </div>
-
-            <div class="question">
-                <p>9. Quais as datas corretas para o registro no livro de ponto da extraclasse de Agosto e Setembro?</p>
-                <label><input type="radio" name="s5_q2" value="correto"> Agosto: 17 a 22/09 | Setembro: 08 a 12/09</label>
-                <label><input type="radio" name="s5_q2" value="errado"> Agosto: 01 a 05/08 | Setembro: 01 a 05/09</label>
-            </div>
-
-            <button type="button" onclick="validarSecao5()">Validar Rotina e Ir para a Lista de Presença</button>
-            <p id="error-s5" class="error-msg">Verifique as respostas sobre a rotina antes de avançar.</p>
-        </form>
-    </div>
-
-    <!-- ================= SEÇÃO 6: PRESENÇA FINAL ================= -->
-    <div id="presenca-area">
-        <h2>Seção 6: Validação Concluída!</h2>
-        <div style="background: #c6f6d5; border: 2px solid #38a169; padding: 20px; border-radius: 6px; text-align: center;">
-            <h3>🎉 Parabéns! Todas as etapas foram validadas com sucesso.</h3>
-            <p>Clique no botão abaixo para assinar a Lista de Presença Oficial no Google Forms:</p>
-            <a href="https://forms.gle/aX41wtfnAazYW6Mf8" target="_blank" class="btn-presenca">ASSINAR LISTA DE PRESENÇA</a>
-        </div>
-    </div>
-</div>
-
-<footer>
-    © Luana Dias. Todos os direitos reservados.
-</footer>
-
-<!-- CARREGAMENTO DA YOUTUBE IFRAME PLAYER API -->
-<script src="https://www.youtube.com/iframe_api"></script>
-<script>
-    let playerDED;
-    let playerEstudo1;
-    let playerEstudo2;
-
-    let v2_1_finalizado = false;
-    let v2_2_finalizado = false;
-
-    // Função padrão invocada automaticamente pela API do YouTube assim que o script é carregado
-    function onYouTubeIframeAPIReady() {
-        // Player do Vídeo DED
-        playerDED = new YT.Player('player-ded', {
-            height: '315',
-            width: '100%',
-            videoId: '-6nSxMWe1P8',
-            events: {
-                'onStateChange': function(event) {
-                    if (event.data === YT.PlayerState.ENDED) {
-                        document.getElementById('btn-s2').disabled = false;
-                        document.getElementById('notice-s2').style.color = '#2f855a';
-                        document.getElementById('notice-s2').innerText = '✓ Vídeo concluído! Pode responder à pergunta e avançar.';
-                    }
-                }
-            }
-        });
-
-        // Player 1 do EstudoPlay (Provas)
-        playerEstudo1 = new YT.Player('player-estudoplay1', {
-            height: '315',
-            width: '100%',
-            videoId: 'K1kcnMI-s7k',
-            events: {
-                'onStateChange': function(event) {
-                    if (event.data === YT.PlayerState.ENDED) {
-                        v2_1_finalizado = true;
-                        verificarLibercaoSecao3();
-                    }
-                }
-            }
-        });
-
-        // Player 2 do EstudoPlay (Redações)
-        playerEstudo2 = new YT.Player('player-estudoplay2', {
-            height: '315',
-            width: '100%',
-            videoId: 'g7o-G2Han0Y',
-            events: {
-                'onStateChange': function(event) {
-                    if (event.data === YT.PlayerState.ENDED) {
-                        v2_2_finalizado = true;
-                        verificarLibercaoSecao3();
-                    }
-                }
-            }
-        });
-    }
-
-    function verificarLibercaoSecao3() {
-        if (v2_1_finalizado && v2_2_finalizado) {
-            document.getElementById('btn-s3').disabled = false;
-            document.getElementById('notice-s3').style.color = '#2f855a';
-            document.getElementById('notice-s3').innerText = '✓ Todos os vídeos foram concluídos! Pode responder e avançar.';
-        } else {
-            document.getElementById('notice-s3').innerText = '▶ Assista a ambos os vídeos para habilitar o botão de avanço.';
-        }
-    }
-
-    function validarSecao1() {
-        const q1 = document.querySelector('input[name="s1_q1"]:checked');
-        const q2 = document.querySelector('input[name="s1_q1_2"]:checked');
-        const q3 = document.querySelector('input[name="s1_q3"]:checked');
-        const q4 = document.querySelector('input[name="s1_q4"]:checked');
-        
-        const err = document.getElementById('error-s1');
-        const sec2 = document.getElementById('secao2');
-
-        if (q1 && q1.value === 'correto' &&
-            q2 && q2.value === 'correto' &&
-            q3 && q3.value === 'correto' &&
-            q4 && q4.value === 'correto') {
-            
-            err.style.display = 'none';
-            sec2.style.display = 'block';
-            sec2.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            err.style.display = 'block';
-        }
-    }
-
-    function validarSecao2() {
-        const q1 = document.querySelector('input[name="s2_q1"]:checked');
-        const err = document.getElementById('error-s2');
-        const sec3 = document.getElementById('secao3');
-
-        if (q1 && q1.value === 'correto') {
-            err.style.display = 'none';
-            sec3.style.display = 'block';
-            sec3.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            err.style.display = 'block';
-        }
-    }
-
-    function validarSecao3() {
-        const q1 = document.querySelector('input[name="s3_q1"]:checked');
-        const err = document.getElementById('error-s3');
-        const sec4 = document.getElementById('secao4');
-
-        if (q1 && q1.value === 'correto') {
-            err.style.display = 'none';
-            sec4.style.display = 'block';
-            sec4.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            err.style.display = 'block';
-        }
-    }
-
-    function validarSecao4() {
-        const q1 = document.querySelector('input[name="s4_q1"]:checked');
-        const err = document.getElementById('error-s4');
-        const sec5 = document.getElementById('secao5');
-
-        if (q1 && q1.value === 'correto') {
-            err.style.display = 'none';
-            sec5.style.display = 'block';
-            sec5.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            err.style.display = 'block';
-        }
-    }
-
-    function validarSecao5() {
-        const q1 = document.querySelector('input[name="s5_q1"]:checked');
-        const q2 = document.querySelector('input[name="s5_q2"]:checked');
-        const err = document.getElementById('error-s5');
-        const presenca = document.getElementById('presenca-area');
-
-        if (q1 && q1.value === 'correto' && q2 && q2.value === 'correto') {
-            err.style.display = 'none';
-            presenca.style.display = 'block';
-            presenca.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            err.style.display = 'block';
-        }
-    }
-</script>
-
-</body>
-</html>
+                <li>Para verificar os dados do ENEM e do SAEB, o acesso é feito através da plataforma no
