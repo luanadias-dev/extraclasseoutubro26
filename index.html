@@ -402,7 +402,7 @@
             <ul>
                 <li>As <strong>2 a 3 habilidades prioritárias</strong> de recomposição em Língua Portuguesa e Matemática;</li>
                 <li>A utilização efetiva dos materiais e recursos pedagógicos disponíveis no <strong>Mural Virtual</strong>.</li>
-                      <li><strong>Onde encontrar:</strong> Disponível na aba PLANO DE TRABALHO DOCENTE, no <strong>Mural Virtual</strong>: <a href="https://bit.ly/m/EEPJIS" target="_blank" class="btn-link">Acessar Mural Virtual</a></li>
+                <li><strong>Onde encontrar:</strong> Disponível na aba PLANO DE TRABALHO DOCENTE, no <strong>Mural Virtual</strong>: <a href="https://bit.ly/m/EEPJIS" target="_blank" class="btn-link">Acessar Mural Virtual</a></li>
             </ul>
         </div>
 
@@ -436,7 +436,7 @@
         <form id="quiz-secao8">
             <div class="question">
                 <p>11. Confirmo a orientação para preenchimento do PDI dos alunos com laudo na planilha do Mural Virtual:</p>
-                <label><input type="radio" name="s8_q1" value="correto"> Sim, estou ciente e realizei o preenchimento/atualização do PDI dos meus alunos atendidos.</label>
+                <label><input type="radio" name="s8_q1" value="correto"> Sim, estou ciente e realizarei o preenchimento/atualização do PDI dos meus alunos atendidos.</label>
             </div>
 
             <button type="button" onclick="validarSecao8()">Confirmar e Ir para a Seção 9 (Livro de Ponto)</button>
@@ -464,7 +464,7 @@
         <form id="quiz-secao9">
             <div class="question">
                 <p>12. Confirmo que realizarei a assinatura e escrituração das 4h de extraclasse no livro de ponto conforme as datas informadas:</p>
-                <label><input type="radio" name="s9_q1" value="correto"> Sim, coloquei as assinatura do livro de ponto em dia, assinando presencialmente respeitando as datas oficiais informadas.</label>
+                <label><input type="radio" name="s9_q1" value="correto"> Sim, coloquei as assinaturas do livro de ponto em dia, assinando presencialmente respeitando as datas oficiais informadas.</label>
             </div>
 
             <button type="button" onclick="validarSecao9()">Finalizar Validações e Liberar Lista de Presença</button>
@@ -490,56 +490,84 @@
 <!-- CARREGAMENTO DA YOUTUBE IFRAME PLAYER API -->
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
-    let playerDED;
-    let playerEstudo1;
-    let playerEstudo2;
+    let playerDED, playerEstudo1, playerEstudo2;
+    let playerDEDIniciado = false;
+    let playerEstudoIniciado = false;
 
     let v2_1_finalizado = false;
     let v2_2_finalizado = false;
 
+    // A API do YouTube é inicializada assim que carregada
     function onYouTubeIframeAPIReady() {
-        playerDED = new YT.Player('player-ded', {
-            height: '315',
-            width: '100%',
-            videoId: '-6nSxMWe1P8',
-            events: {
-                'onStateChange': function(event) {
-                    if (event.data === YT.PlayerState.ENDED) {
-                        document.getElementById('btn-s2').disabled = false;
-                        document.getElementById('notice-s2').style.color = '#2f855a';
-                        document.getElementById('notice-s2').innerText = '✓ Vídeo concluído! Pode responder à pergunta e avançar.';
-                    }
-                }
-            }
-        });
+        // Nada necessário no load inicial, os players são chamados na transição de seções
+    }
 
-        playerEstudo1 = new YT.Player('player-estudoplay1', {
-            height: '315',
-            width: '100%',
-            videoId: 'K1kcnMI-s7k',
-            events: {
-                'onStateChange': function(event) {
-                    if (event.data === YT.PlayerState.ENDED) {
-                        v2_1_finalizado = true;
-                        verificarLibercaoSecao3();
+    function carregarPlayerDED() {
+        if (!playerDEDIniciado) {
+            playerDEDIniciado = true;
+            playerDED = new YT.Player('player-ded', {
+                height: '315',
+                width: '100%',
+                videoId: '-6nSxMWe1P8',
+                host: 'https://www.youtube.com',
+                playerVars: {
+                    'origin': window.location.origin,
+                    'enablejsapi': 1
+                },
+                events: {
+                    'onStateChange': function(event) {
+                        if (event.data === YT.PlayerState.ENDED) {
+                            document.getElementById('btn-s2').disabled = false;
+                            document.getElementById('notice-s2').style.color = '#2f855a';
+                            document.getElementById('notice-s2').innerText = '✓ Vídeo concluído! Pode responder à pergunta e avançar.';
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
+    }
 
-        playerEstudo2 = new YT.Player('player-estudoplay2', {
-            height: '315',
-            width: '100%',
-            videoId: 'g7o-G2Han0Y',
-            events: {
-                'onStateChange': function(event) {
-                    if (event.data === YT.PlayerState.ENDED) {
-                        v2_2_finalizado = true;
-                        verificarLibercaoSecao3();
+    function carregarPlayersEstudoPlay() {
+        if (!playerEstudoIniciado) {
+            playerEstudoIniciado = true;
+            playerEstudo1 = new YT.Player('player-estudoplay1', {
+                height: '315',
+                width: '100%',
+                videoId: 'K1kcnMI-s7k',
+                host: 'https://www.youtube.com',
+                playerVars: {
+                    'origin': window.location.origin,
+                    'enablejsapi': 1
+                },
+                events: {
+                    'onStateChange': function(event) {
+                        if (event.data === YT.PlayerState.ENDED) {
+                            v2_1_finalizado = true;
+                            verificarLibercaoSecao3();
+                        }
                     }
                 }
-            }
-        });
+            });
+
+            playerEstudo2 = new YT.Player('player-estudoplay2', {
+                height: '315',
+                width: '100%',
+                videoId: 'g7o-G2Han0Y',
+                host: 'https://www.youtube.com',
+                playerVars: {
+                    'origin': window.location.origin,
+                    'enablejsapi': 1
+                },
+                events: {
+                    'onStateChange': function(event) {
+                        if (event.data === YT.PlayerState.ENDED) {
+                            v2_2_finalizado = true;
+                            verificarLibercaoSecao3();
+                        }
+                    }
+                }
+            });
+        }
     }
 
     function verificarLibercaoSecao3() {
@@ -562,6 +590,7 @@
             err.style.display = 'none';
             sec2.style.display = 'block';
             sec2.scrollIntoView({ behavior: 'smooth' });
+            setTimeout(carregarPlayerDED, 300);
         } else {
             err.style.display = 'block';
         }
@@ -576,6 +605,7 @@
             err.style.display = 'none';
             sec3.style.display = 'block';
             sec3.scrollIntoView({ behavior: 'smooth' });
+            setTimeout(carregarPlayersEstudoPlay, 300);
         } else {
             err.style.display = 'block';
         }
